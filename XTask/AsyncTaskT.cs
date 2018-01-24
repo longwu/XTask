@@ -6,10 +6,7 @@ using System.Threading;
 
 namespace XTask
 {
-    /// <summary>
-    /// 一个异步任务类
-    /// </summary>
-    public class AsyncTask
+    public class AsyncTask<T>
     {
         /// <summary>
         /// 任务是否已经启动
@@ -32,14 +29,14 @@ namespace XTask
         private bool isFaulted = false;
 
         /// <summary>
-        /// 异步方法
+        /// 异步方法,带返回参数
         /// </summary>
-        private Action asyncAction = null;
+        private Func<T> asyncFunc = null;
 
         /// <summary>
-        ///  异步任务执行过程中的回调方法,带异常参数
+        ///  异步任务执行过程中的回调方法
         /// </summary>
-        private Action<Exception> exCallBack = null;
+        private Action<T, Exception> callBack = null;
 
         /// <summary>
         /// 同步模型,用于向UI线程发送同步消息
@@ -91,23 +88,19 @@ namespace XTask
             get { return this.exception; }
         }
 
-        /// <summary>
-        /// 创建一个异步任务
-        /// </summary>
-        /// <param name="action">需要异步执行的方法</param>
-        public AsyncTask(Action action)
+        public AsyncTask(Func<T> func)
         {
             this.syncContext = SynchronizationContext.Current;
-            this.asyncAction = action;
+            this.asyncFunc = func;
         }
 
         /// <summary>
         /// 异步执行
         /// </summary>
-        /// <param name="exceptionCallBack">任务完成后的同步回调方法</param>
-        public void Run(Action<Exception> exceptionCallBack)
+        /// <param name="callback">任务完成后的同步回调方法</param>
+        public void Run(Action<T, Exception> callback)
         {
-            this.exCallBack = exceptionCallBack;
+            this.callBack = callback;
             this.Run();
         }
 
@@ -116,14 +109,15 @@ namespace XTask
         /// </summary>
         private void Run()
         {
-            if (this.asyncAction != null)
+            if (this.asyncFunc != null)
             {
                 ThreadPool.QueueUserWorkItem(obj =>
                 {
+                    T result = default(T);
                     try
                     {
                         this.isStarted = true;
-                        this.asyncAction.Invoke(); //执行异步方法
+                        result = this.asyncFunc.Invoke(); //执行异步方法
                     }
                     catch (Exception ex)
                     {
@@ -135,7 +129,7 @@ namespace XTask
                         if (!this.isCancelled)
                         {
                             this.isEnded = true;
-                            ContinueWith(this.exception); //异步任务完成后进行同步回调
+                            ContinueWith(result,this.exception); //异步任务完成后进行同步回调
                         }
                     }
                 });
@@ -153,16 +147,17 @@ namespace XTask
         /// <summary>
         /// 异步任务完成后继续同步回调
         /// </summary>
-        /// <param name="ex">异常信息</param>
-        private void ContinueWith(Exception ex)
+        /// <param name="result">任务返回值</param>
+        /// <param name="exception">任务异常</param>
+        private void ContinueWith(T result, Exception exception)
         {
-            if (this.exCallBack != null)
+            if (this.callBack != null)
             {
                 this.syncContext.Send(obj =>
                 {
-                    if (this.exCallBack != null)
+                    if (this.callBack != null)
                     {
-                        this.exCallBack.Invoke(ex);//同步回调
+                        this.callBack.Invoke(result, exception);//同步回调
                     }
                 }, null);
             }
