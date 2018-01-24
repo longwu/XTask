@@ -31,18 +31,33 @@ namespace XTask.WinformDemo
         {
             task = new AsyncTask(action);
 
-            task.Run(() =>
-            {
-                //判断任务是否出现异常
-                if (task.Exception != null)
-                {
-                    this.txt.Text = task.Exception.ToString();
-                }
-                else//任务完成
-                {
-                    this.txt.Text = "Task Completed";
-                }
-            });
+            task.Run(ex =>
+             {
+                 //异步方法完成后执行下面的代码
+                 //判断任务是否出现异常
+                 if (ex != null)
+                 {
+                     this.txt.Text = task.Exception.ToString();
+                 }
+                 else//任务完成
+                 {
+                     this.txt.Text = "Task Completed";
+                 }
+             });
+
+            //new AsyncTask(action).Run(() =>
+            // {
+            //     //异步方法完成后执行下面的代码
+            //     //判断任务是否出现异常
+            //     if (task.Exception != null)
+            //     {
+            //         this.txt.Text = task.Exception.ToString();
+            //     }
+            //     else//任务完成
+            //     {
+            //         this.txt.Text = "Task Completed";
+            //     }
+            // });
         }
 
         /// <summary>
