@@ -1,11 +1,11 @@
 # XTask
 XTask是一个轻量级客户端异步任务类库,简单易用.
 
-# 运行环境: 
+## 运行环境: 
 .Net Framework 3.5或以上.
 
-# 用法
-无返回值的异步任务
+## 用法
+**无返回值的异步任务**
 ```C#
 private AsyncTask task = null;
 /// <summary>
@@ -47,7 +47,7 @@ private void DoSomething()
 }
 ```
 
-带返回值的异步任务
+**带返回值的异步任务**
 ```C#
 private AsyncTask<string> taskWithResult = null;
 /// <summary>
@@ -91,4 +91,4 @@ private string DoSomethingWithResult()
 }
 ```
 
-更多详见Demo代码
+**更多详见Demo代码**
