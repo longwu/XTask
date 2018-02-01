@@ -25,7 +25,7 @@ private void Run()
         }
         else//任务完成
         {
-            MessageBox.Show("Task comleted");//任务完成
+            MessageBox.Show("Task completed");//任务完成
         }
     });
 }
@@ -87,7 +87,7 @@ private void Cancel()
 private string DoSomethingWithResult()
 {
     Thread.Sleep(3000);
-    return "Task ended.";
+    return "Task completed";
 }
 ```
 
