@@ -11,7 +11,7 @@ private AsyncTask task = null;
 /// <summary>
 /// 执行任务
 /// </summary>
-private void Run()
+private void Start()
 {
     task = new AsyncTask(DoSomething);//创建一个异步任务
     //执行任务
@@ -53,7 +53,7 @@ private AsyncTask<string> taskWithResult = null;
 /// <summary>
 /// 执行任务
 /// </summary>
-private void Run()
+private void Start()
 {
     taskWithResult = new AsyncTask<string>(DoSomethingWithResult);
 
