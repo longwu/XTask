@@ -49,28 +49,28 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Demo1.xaml.cs">
-      <DependentUpon>Demo1.xaml</DependentUpon>
+    <Compile Include="UCDemo1.xaml.cs">
+      <DependentUpon>UCDemo1.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demo2.xaml.cs">
-      <DependentUpon>Demo2.xaml</DependentUpon>
+    <Compile Include="UCDemo2.xaml.cs">
+      <DependentUpon>UCDemo2.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Demo3.xaml.cs">
-      <DependentUpon>Demo3.xaml</DependentUpon>
+    <Compile Include="UCDemo3.xaml.cs">
+      <DependentUpon>UCDemo3.xaml</DependentUpon>
     </Compile>
-    <Page Include="Demo1.xaml">
+    <Page Include="UCDemo1.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Demo2.xaml">
+    <Page Include="UCDemo2.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Demo3.xaml">
+    <Page Include="UCDemo3.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="WinMain.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -78,8 +78,8 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="WinMain.xaml.cs">
+      <DependentUpon>WinMain.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
   </ItemGroup>

@@ -43,16 +43,43 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="UCDemo1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDemo1.Designer.cs">
+      <DependentUpon>UCDemo1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDemo2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDemo2.Designer.cs">
+      <DependentUpon>UCDemo2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UCDemo3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UCDemo3.Designer.cs">
+      <DependentUpon>UCDemo3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WinForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="WinForm.Designer.cs">
+      <DependentUpon>WinForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <EmbeddedResource Include="UCDemo1.resx">
+      <DependentUpon>UCDemo1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDemo2.resx">
+      <DependentUpon>UCDemo2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UCDemo3.resx">
+      <DependentUpon>UCDemo3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WinForm.resx">
+      <DependentUpon>WinForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

@@ -1,26 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Forms;
 
-namespace XTask.WPFDemo
+namespace XTask.WinformDemo
 {
-    /// <summary>
-    /// Demo1.xaml 的交互逻辑
-    /// </summary>
-    public partial class Demo1 : UserControl
+    public partial class UCDemo1 : UserControl
     {
-        public Demo1()
+        private AsyncTask task = null;
+
+        public UCDemo1()
         {
             InitializeComponent();
 
@@ -33,7 +27,7 @@ namespace XTask.WPFDemo
         /// </summary>
         private void StartTaskOne()
         {
-            this.lsv.Items.Add("Task one started.");
+            this.lsb.Items.Add("Task one started.");
             new AsyncTask(() =>
             {
                 DoSomething();//异步执行
@@ -43,18 +37,18 @@ namespace XTask.WPFDemo
                 //判断任务是否出现异常
                 if (ex != null)
                 {
-                    this.lsv.Items.Add(ex.ToString());
+                    this.lsb.Items.Add(string.Format("Task one errored: {0}", ex.Message));
                 }
                 else//任务完成
                 {
-                    this.lsv.Items.Add("Task one ended.");
+                    this.lsb.Items.Add("Task one ended.");
                 }
             });
         }
 
         private void StartTaskTwo()
         {
-            this.lsv.Items.Add("Task two started.");
+            this.lsb.Items.Add("Task two started.");
             new AsyncTask<string>(() =>
             {
                 return DoSomethingWithResult();//异步执行
@@ -64,11 +58,11 @@ namespace XTask.WPFDemo
                 //判断任务是否出现异常
                 if (ex != null)
                 {
-                    this.lsv.Items.Add(string.Format("Task two errored: {0}", ex.ToString()));
+                    this.lsb.Items.Add(string.Format("Task two errored: {0}", ex.Message));
                 }
                 else//任务完成
                 {
-                    this.lsv.Items.Add(result);
+                    this.lsb.Items.Add(result);
                 }
             });
         }

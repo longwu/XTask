@@ -18,9 +18,9 @@ namespace XTask.WPFDemo
     /// <summary>
     /// Demo3.xaml 的交互逻辑
     /// </summary>
-    public partial class Demo3 : UserControl
+    public partial class UCDemo3 : UserControl
     {
-        public Demo3()
+        public UCDemo3()
         {
             InitializeComponent();
 
@@ -39,7 +39,7 @@ namespace XTask.WPFDemo
                 //判断任务是否出现异常
                 if (ex != null)
                 {
-                    this.lsv.Items.Add(string.Format("Task errored: {0}", ex.ToString()));
+                    this.lsv.Items.Add(string.Format("Task errored: {0}", ex.Message));
                 }
                 else//任务完成
                 {
@@ -65,6 +65,5 @@ namespace XTask.WPFDemo
                 i++;
             }
         }
-
     }
 }

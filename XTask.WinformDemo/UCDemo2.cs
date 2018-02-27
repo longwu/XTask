@@ -1,28 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Drawing;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
+using System.Windows.Forms;
 
-namespace XTask.WPFDemo
+namespace XTask.WinformDemo
 {
-    /// <summary>
-    /// Demo2.xaml 的交互逻辑
-    /// </summary>
-    public partial class Demo2 : UserControl
+    public partial class UCDemo2 : UserControl
     {
         private AsyncTask task = null;
 
-        public Demo2()
+        public UCDemo2()
         {
             InitializeComponent();
 
@@ -35,7 +27,7 @@ namespace XTask.WPFDemo
         /// </summary>
         private void Start()
         {
-            this.lsv.Items.Add("Task started.");
+            this.lsb.Items.Add("Task started.");
             task = new AsyncTask(DoSomething);
             task.Run(ex =>
             {
@@ -43,11 +35,11 @@ namespace XTask.WPFDemo
                 //判断任务是否出现异常
                 if (ex != null)
                 {
-                    this.lsv.Items.Add(string.Format("Task errored: {0}", ex.ToString()));
+                    this.lsb.Items.Add(string.Format("Task errored: {0}", ex.Message));
                 }
                 else//任务完成
                 {
-                    this.lsv.Items.Add("Task ended.");
+                    this.lsb.Items.Add("Task ended.");
                 }
             });
         }
@@ -60,7 +52,7 @@ namespace XTask.WPFDemo
             if (task != null)
             {
                 task.Cancel();
-                this.lsv.Items.Add("Task has been cancelled.");
+                this.lsb.Items.Add("Task has been cancelled.");
             }
         }
 

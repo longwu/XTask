@@ -1,4 +1,4 @@
-﻿<Window x:Class="XTask.WPFDemo.MainWindow"
+﻿<Window x:Class="XTask.WPFDemo.WinMain"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:control="clr-namespace:XTask.WPFDemo"
@@ -6,17 +6,17 @@
     <TabControl TabStripPlacement="Left">
         <TabItem Header="执行异步任务" Height="30">
             <TabItem.Content>
-                <control:Demo1 HorizontalAlignment="Center"></control:Demo1>
+                <control:UCDemo1 HorizontalAlignment="Center"></control:UCDemo1>
             </TabItem.Content>
         </TabItem>
         <TabItem Header="撤销异步任务"  Height="30">
             <TabItem.Content>
-                <control:Demo2 HorizontalAlignment="Center"></control:Demo2>
+                <control:UCDemo2 HorizontalAlignment="Center"></control:UCDemo2>
             </TabItem.Content>
         </TabItem>
-        <TabItem Header="异步任务中异常处理" Height="30">
+        <TabItem Header="处理异步任务异常" Height="30">
             <TabItem.Content>
-                <control:Demo3 HorizontalAlignment="Center"></control:Demo3>
+                <control:UCDemo3 HorizontalAlignment="Center"></control:UCDemo3>
             </TabItem.Content>
         </TabItem>
     </TabControl>
