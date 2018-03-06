@@ -22,6 +22,7 @@ namespace XTask.WPFDemo
         private void StartTaskOne()
         {
             this.lsv.Items.Add("Task one started.");
+
             new AsyncTask(() =>
             {
                 DoSomething();//异步执行
